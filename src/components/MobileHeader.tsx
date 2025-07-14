@@ -12,10 +12,9 @@ import { Badge } from "@/components/ui/badge";
 
 interface MobileHeaderProps {
   showSearch?: boolean;
-  onMenuClick?: () => void;
 }
 
-export default function MobileHeader({ showSearch = false, onMenuClick }: MobileHeaderProps) {
+export default function MobileHeader({ showSearch = false }: MobileHeaderProps) {
   return (
     <header className="fixed top-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-background/95 backdrop-blur-lg border-b shadow-sm z-40">
       <div className="flex items-center justify-between px-4 py-3">
