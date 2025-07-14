@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -8,11 +8,15 @@ import { cn } from "@/lib/utils";
 interface ImageCarouselProps {
   images: string[];
   alt: string;
+  onImageClick?: (index: number) => void;
 }
 
-export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
+export default function ImageCarousel({ images, alt, onImageClick }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [imageHeight, setImageHeight] = useState<number>(400);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const nextImage = () => {
     setDirection(1);
@@ -33,6 +37,8 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
     const threshold = 50;
     const velocity = info.velocity.x;
     
+    setIsDragging(false);
+    
     // Consider velocity for more natural swipe detection
     if (info.offset.x > threshold || velocity > 500) {
       // Swipe right - go to previous image
@@ -42,6 +48,38 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
       nextImage();
     }
   };
+
+  const handleDragStart = () => {
+    setIsDragging(true);
+  };
+
+  const handleImageClick = () => {
+    if (!isDragging) {
+      onImageClick?.(currentIndex);
+    }
+  };
+
+  const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = event.currentTarget;
+    const containerWidth = containerRef.current?.offsetWidth || 400;
+    const aspectRatio = img.naturalHeight / img.naturalWidth;
+    const calculatedHeight = Math.min(containerWidth * aspectRatio, 500);
+    setImageHeight(calculatedHeight);
+  };
+
+  // Update height when current image changes
+  useEffect(() => {
+    if (images[currentIndex] && containerRef.current) {
+      const img = new window.Image();
+      img.onload = () => {
+        const containerWidth = containerRef.current?.offsetWidth || 400;
+        const aspectRatio = img.height / img.width;
+        const calculatedHeight = Math.min(containerWidth * aspectRatio, 500);
+        setImageHeight(calculatedHeight);
+      };
+      img.src = images[currentIndex];
+    }
+  }, [currentIndex, images]);
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -60,19 +98,29 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
 
   if (images.length === 1) {
     return (
-      <div className="relative aspect-video">
+      <div 
+        ref={containerRef}
+        className="relative w-full cursor-pointer hover:opacity-90 transition-opacity overflow-hidden rounded-lg"
+        onClick={() => onImageClick?.(0)}
+      >
         <Image
           src={images[0]}
           alt={alt}
-          fill
-          className="object-cover"
+          width={800}
+          height={600}
+          className="w-full h-auto object-cover"
+          onLoad={handleImageLoad}
         />
       </div>
     );
   }
 
   return (
-    <div className="relative aspect-video bg-black overflow-hidden">
+    <div 
+      ref={containerRef}
+      className="relative w-full bg-black overflow-hidden transition-all duration-300"
+      style={{ height: `${imageHeight}px` }}
+    >
       {/* Main Image Display */}
       <div className="relative w-full h-full">
         <AnimatePresence initial={false} custom={direction}>
@@ -92,18 +140,22 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.05}
+            onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
             whileDrag={{ 
               scale: 0.98,
               rotateY: 0
             }}
             className="absolute inset-0 cursor-grab active:cursor-grabbing will-change-transform"
+            onClick={handleImageClick}
           >
             <Image
               src={images[currentIndex]}
               alt={`${alt} ${currentIndex + 1}`}
-              fill
-              className="object-cover pointer-events-none"
+              width={800}
+              height={600}
+              className="w-full h-full object-cover pointer-events-none"
+              onLoad={handleImageLoad}
             />
           </motion.div>
         </AnimatePresence>

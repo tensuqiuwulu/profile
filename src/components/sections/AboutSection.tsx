@@ -11,13 +11,12 @@ export default function AboutSection() {
   const skills = [
     "React",
     "Next.js",
-    "TypeScript",
+    "Golang",
     "Node.js",
     "Python",
     "PostgreSQL",
     "MongoDB",
     "TailwindCSS",
-    "Framer Motion",
   ];
 
   const experiences = [
