@@ -1,4 +1,6 @@
-export default function Loading() {
+import { memo } from "react";
+
+const Loading = memo(() => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="text-center space-y-4">
@@ -12,4 +14,8 @@ export default function Loading() {
       </div>
     </div>
   );
-}
+});
+
+Loading.displayName = "Loading";
+
+export default Loading;

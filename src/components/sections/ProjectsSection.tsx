@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -15,7 +16,7 @@ import {
   GitFork
 } from "lucide-react";
 
-export default function ProjectsSection() {
+function ProjectsSection() {
   const projects = [
     {
       id: 1,
@@ -63,7 +64,7 @@ export default function ProjectsSection() {
   return (
     <div className="p-4 space-y-4">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold">My Projects</h2>
+        <h2 className="text-xl font-bold">Web Development Projects & Portfolio</h2>
         <Button size="sm" variant="outline" asChild>
           <a 
             href="https://github.com/tensuqiuwulu?tab=repositories" 
@@ -184,3 +185,5 @@ export default function ProjectsSection() {
     </div>
   );
 }
+
+export default memo(ProjectsSection);

@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Calendar, MapPin, Download, Briefcase, Clock, Code, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function AboutSection() {
+function AboutSection() {
   const skills = [
     "React",
     "Next.js",
@@ -93,7 +94,7 @@ export default function AboutSection() {
               <AvatarFallback>TQ</AvatarFallback>
             </Avatar>
             <div className="flex-1">
-              <h2 className="text-xl font-bold">Tensu Qiuwulu</h2>
+              <h2 className="text-xl font-bold">Tensu Qiuwulu - Full Stack Developer</h2>
               <p className="text-muted-foreground">Full Stack Developer</p>
               <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4" />
@@ -103,9 +104,10 @@ export default function AboutSection() {
           </div>
 
           <p className="text-sm text-muted-foreground mb-4">
-            Passionate full stack developer with 4+ years of experience building
-            modern web applications. Specialized in React, Next.js, and
-            TypeScript ecosystem.
+            Professional Full Stack Developer with 4+ years of experience in modern web development. 
+            Specialized in React, Next.js, TypeScript, Node.js, and Python. Expert in building scalable 
+            web applications, e-commerce platforms, and enterprise solutions. Available for freelance 
+            projects and full-time opportunities.
           </p>
 
           <div className="flex flex-wrap gap-2 mb-4">
@@ -166,7 +168,7 @@ export default function AboutSection() {
       {/* Skills */}
       <Card className="border-0 shadow-sm">
         <CardContent className="p-4">
-          <h3 className="font-semibold mb-3">Skills & Technologies</h3>
+          <h3 className="font-semibold mb-3">Technical Skills & Technologies</h3>
           <div className="flex flex-wrap gap-2">
             {skills.map((skill, index) => (
               <motion.div
@@ -187,7 +189,7 @@ export default function AboutSection() {
       {/* Experience */}
       <Card className="border-0 shadow-sm">
         <CardContent className="p-4">
-          <h3 className="font-semibold mb-3">Experience</h3>
+          <h3 className="font-semibold mb-3">Professional Experience</h3>
           <div className="space-y-3">
             {experiences.map((exp, index) => (
               <motion.div
@@ -224,3 +226,5 @@ export default function AboutSection() {
     </div>
   );
 }
+
+export default memo(AboutSection);

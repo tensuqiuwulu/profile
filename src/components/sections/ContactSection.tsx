@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { memo, useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ import {
   SiInstagram,
 } from "react-icons/si";
 
-export default function ContactSection() {
+function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -114,7 +114,7 @@ export default function ContactSection() {
   return (
     <div className="p-4 space-y-4">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold">Get in Touch</h2>
+        <h2 className="text-xl font-bold">Contact Full Stack Developer</h2>
         <Badge variant="secondary" className="text-xs">
           Available for work
         </Badge>
@@ -129,7 +129,7 @@ export default function ContactSection() {
               <AvatarFallback>TQ</AvatarFallback>
             </Avatar>
             <div className="flex-1">
-              <h3 className="font-semibold">Tensu Qiuwulu</h3>
+              <h3 className="font-semibold">Tensu Qiuwulu - Full Stack Developer</h3>
               <p className="text-sm text-muted-foreground">
                 Full Stack Developer
               </p>
@@ -177,7 +177,7 @@ export default function ContactSection() {
       {/* Social Links */}
       <Card className="border-0 shadow-sm">
         <CardContent className="p-4">
-          <h3 className="font-semibold mb-3">Connect with Me</h3>
+          <h3 className="font-semibold mb-3">Connect with Developer</h3>
           <div className="flex justify-center gap-4">
             {socialLinks.map((social, index) => (
               <motion.a
@@ -203,7 +203,7 @@ export default function ContactSection() {
         <CardContent className="p-4">
           <div className="flex items-center gap-2 mb-4">
             <Send className="w-5 h-5 text-primary" />
-            <h3 className="font-semibold">Send a Message</h3>
+            <h3 className="font-semibold">Send Message to Developer</h3>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -291,7 +291,7 @@ export default function ContactSection() {
         <CardContent className="p-4">
           <div className="flex items-center gap-2 mb-3">
             <Clock className="w-5 h-5 text-primary" />
-            <h3 className="font-semibold">Availability</h3>
+            <h3 className="font-semibold">Developer Availability</h3>
           </div>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between items-center">
@@ -315,3 +315,5 @@ export default function ContactSection() {
     </div>
   );
 }
+
+export default memo(ContactSection);
