@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Mail, MapPin, Send, Clock } from "lucide-react";
+import { Mail, MapPin, Send, Clock, CheckCircle, AlertCircle } from "lucide-react";
 import {
   SiGithub,
   SiLinkedin,
@@ -22,6 +22,9 @@ export default function ContactSection() {
     email: "",
     message: "",
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const contactMethods = [
     {
@@ -65,10 +68,38 @@ export default function ContactSection() {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Using EmailJS to send email
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      
+      // Reset status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+    }
   };
 
   const handleInputChange = (
@@ -210,10 +241,47 @@ export default function ContactSection() {
               />
             </div>
 
-            <Button type="submit" className="w-full" size="sm">
-              <Send className="w-4 h-4 mr-2" />
-              Send Message
+            <Button 
+              type="submit" 
+              className="w-full" 
+              size="sm"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="w-4 h-4 mr-2 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send className="w-4 h-4 mr-2" />
+                  Send Message
+                </>
+              )}
             </Button>
+            
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-2 text-green-600 text-sm bg-green-50 p-3 rounded-lg"
+              >
+                <CheckCircle className="w-4 h-4" />
+                Message sent successfully! I'll get back to you soon.
+              </motion.div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-2 text-red-600 text-sm bg-red-50 p-3 rounded-lg"
+              >
+                <AlertCircle className="w-4 h-4" />
+                Failed to send message. Please try again or contact me directly.
+              </motion.div>
+            )}
           </form>
         </CardContent>
       </Card>
