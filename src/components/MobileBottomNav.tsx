@@ -21,7 +21,7 @@ export default function MobileBottomNav({ activeTab, onTabChange }: MobileBottom
   ];
 
   return (
-    <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-background/95 backdrop-blur-lg border-t shadow-lg z-50">
+    <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white rounded-t-lg border-t shadow-lg z-50">
       <div className="flex items-center justify-around px-2 py-2">
         {navItems.map((item) => {
           const IconComponent = item.icon;
