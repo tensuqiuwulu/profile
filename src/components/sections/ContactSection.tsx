@@ -268,7 +268,7 @@ export default function ContactSection() {
                 className="flex items-center gap-2 text-green-600 text-sm bg-green-50 p-3 rounded-lg"
               >
                 <CheckCircle className="w-4 h-4" />
-                Message sent successfully! I'll get back to you soon.
+                Message sent successfully! I&apos;ll get back to you soon.
               </motion.div>
             )}
             
