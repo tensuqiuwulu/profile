@@ -9,32 +9,53 @@ import { Calendar, MapPin, Link as LinkIcon, Users } from "lucide-react";
 
 export default function AboutSection() {
   const skills = [
-    "React", "Next.js", "TypeScript", "Node.js", "Python", 
-    "PostgreSQL", "MongoDB", "TailwindCSS", "Framer Motion"
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Python",
+    "PostgreSQL",
+    "MongoDB",
+    "TailwindCSS",
+    "Framer Motion",
   ];
 
   const experiences = [
     {
-      title: "Senior Frontend Developer",
-      company: "Tech Company",
-      period: "2022 - Present",
+      title: "Software Engineer",
+      company: "Harikatz",
+      period: "2025 - Present",
       location: "Bali, Indonesia",
-      type: "Full Time"
+      type: "Part Time",
     },
     {
       title: "Full Stack Developer",
-      company: "Startup Inc",
-      period: "2020 - 2022",
-      location: "Remote",
-      type: "Part Time"
-    }
+      company: "Dinas Komunikasi, Informatika dan Statistik Provinsi Bali",
+      period: "2022 - Present",
+      location: "Bali, Indonesia",
+      type: "Full Time",
+    },
+    {
+      title: "Software Engineer",
+      company: "PT. Bimasakti Sanjaya",
+      period: "2021 - 2022",
+      location: "Bali, Indonesia",
+      type: "Full Time",
+    },
+    {
+      title: "Full Stack Developer",
+      company: "PT. BPR Kita Centradana",
+      period: "2020 - 2021",
+      location: "Bali, Indonesia",
+      type: "Full Time",
+    },
   ];
 
   const stats = [
     { label: "Projects", value: "10+" },
     { label: "Experience", value: "4+ Years" },
     { label: "Technologies", value: "15+" },
-    { label: "Clients", value: "10+" }
+    { label: "Clients", value: "10+" },
   ];
 
   return (
@@ -56,12 +77,13 @@ export default function AboutSection() {
               </div>
             </div>
           </div>
-          
+
           <p className="text-sm text-muted-foreground mb-4">
-            Passionate full stack developer with 4+ years of experience building modern web applications. 
-            Specialized in React, Next.js, and TypeScript ecosystem.
+            Passionate full stack developer with 4+ years of experience building
+            modern web applications. Specialized in React, Next.js, and
+            TypeScript ecosystem.
           </p>
-          
+
           <div className="flex gap-2">
             <Button size="sm" className="flex-1">
               <Users className="w-4 h-4 mr-2" />
@@ -86,8 +108,12 @@ export default function AboutSection() {
           >
             <Card className="text-center border-0 shadow-sm">
               <CardContent className="p-4">
-                <div className="text-2xl font-bold text-primary">{stat.value}</div>
-                <div className="text-xs text-muted-foreground">{stat.label}</div>
+                <div className="text-2xl font-bold text-primary">
+                  {stat.value}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {stat.label}
+                </div>
               </CardContent>
             </Card>
           </motion.div>
@@ -129,7 +155,9 @@ export default function AboutSection() {
                 className="border-l-2 border-primary pl-4"
               >
                 <div className="font-medium text-sm">{exp.title}</div>
-                <div className="text-sm text-muted-foreground">{exp.company}</div>
+                <div className="text-sm text-muted-foreground">
+                  {exp.company}
+                </div>
                 <div className="flex items-center gap-4 mt-1 text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
