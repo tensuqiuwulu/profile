@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import ImageCarousel from "@/components/ui/image-carousel";
 import { 
   Heart,
   MessageCircle,
@@ -14,7 +15,6 @@ import {
   MapPin
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 
 interface MobilePostProps {
   post: {
@@ -26,7 +26,7 @@ interface MobilePostProps {
       verified?: boolean;
     };
     content: string;
-    image?: string;
+    images?: string[];
     timestamp: string;
     likes: number;
     comments: number;
@@ -94,14 +94,12 @@ export default function MobilePost({
           </Button>
         </div>
 
-        {/* Post Image */}
-        {post.image && (
-          <div className="relative w-full aspect-square">
-            <Image
-              src={post.image}
-              alt="Post image"
-              fill
-              className="object-cover"
+        {/* Post Images */}
+        {post.images && post.images.length > 0 && (
+          <div className="mb-3">
+            <ImageCarousel 
+              images={post.images} 
+              alt="Post images"
             />
           </div>
         )}

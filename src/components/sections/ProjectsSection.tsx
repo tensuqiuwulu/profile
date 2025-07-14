@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import ImageCarousel from "@/components/ui/image-carousel";
 import { 
   Heart, 
   MessageCircle, 
@@ -14,7 +15,6 @@ import {
   Star,
   GitFork
 } from "lucide-react";
-import Image from "next/image";
 
 export default function ProjectsSection() {
   const projects = [
@@ -22,7 +22,7 @@ export default function ProjectsSection() {
       id: 1,
       title: "E-Commerce Platform",
       description: "Full-stack e-commerce solution with Next.js and TypeScript. Features include user authentication, payment integration, and admin dashboard.",
-      image: "/project1.svg",
+      images: ["/project1.svg", "/project1.svg", "/project1.svg"],
       tags: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
       stats: { stars: 24, forks: 8, likes: 156 },
       demoUrl: "#",
@@ -33,7 +33,7 @@ export default function ProjectsSection() {
       id: 2,
       title: "Task Management App",
       description: "React-based task management application with drag-and-drop functionality, real-time updates, and team collaboration features.",
-      image: "/project1.svg",
+      images: ["/project1.svg", "/project1.svg"],
       tags: ["React", "Node.js", "Socket.io", "MongoDB"],
       stats: { stars: 18, forks: 5, likes: 92 },
       demoUrl: "#",
@@ -44,7 +44,7 @@ export default function ProjectsSection() {
       id: 3,
       title: "Weather Dashboard",
       description: "Beautiful weather dashboard with location-based forecasts, interactive charts, and responsive design.",
-      image: "/project1.svg",
+      images: ["/project1.svg"],
       tags: ["Vue.js", "Chart.js", "OpenWeather API"],
       stats: { stars: 31, forks: 12, likes: 203 },
       demoUrl: "#",
@@ -98,13 +98,11 @@ export default function ProjectsSection() {
                   </div>
                 </div>
 
-                {/* Project Image */}
-                <div className="relative aspect-video mb-3">
-                  <Image
-                    src={project.image}
+                {/* Project Images */}
+                <div className="mb-3">
+                  <ImageCarousel 
+                    images={project.images} 
                     alt={project.title}
-                    fill
-                    className="object-cover"
                   />
                 </div>
 

@@ -5,8 +5,7 @@ import {
   Home,
   User,
   Briefcase,
-  Mail,
-  PlusCircle
+  Mail
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +18,6 @@ export default function MobileBottomNav({ activeTab, onTabChange }: MobileBottom
   const navItems = [
     { id: "home", icon: Home, label: "Home" },
     { id: "about", icon: User, label: "Profile" },
-    { id: "post", icon: PlusCircle, label: "Post", isAction: true },
     { id: "projects", icon: Briefcase, label: "Projects" },
     { id: "contact", icon: Mail, label: "Messages" },
   ];
@@ -38,27 +36,22 @@ export default function MobileBottomNav({ activeTab, onTabChange }: MobileBottom
               size="sm"
               className={cn(
                 "flex flex-col items-center gap-1 h-auto py-2 px-3 transition-all duration-200",
-                item.isAction 
-                  ? "bg-primary text-primary-foreground hover:bg-primary/90 rounded-full w-12 h-12 p-0" 
-                  : isActive 
-                    ? "text-primary bg-primary/10" 
-                    : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+                isActive 
+                  ? "text-primary bg-primary/10" 
+                  : "text-muted-foreground hover:text-primary hover:bg-primary/5"
               )}
               onClick={() => onTabChange(item.id)}
             >
               <IconComponent className={cn(
-                "transition-all duration-200",
-                item.isAction ? "h-6 w-6" : "h-5 w-5",
-                isActive && !item.isAction && "scale-110"
+                "transition-all duration-200 h-5 w-5",
+                isActive && "scale-110"
               )} />
-              {!item.isAction && (
-                <span className={cn(
-                  "text-xs transition-all duration-200",
-                  isActive && "font-medium"
-                )}>
-                  {item.label}
-                </span>
-              )}
+              <span className={cn(
+                "text-xs transition-all duration-200",
+                isActive && "font-medium"
+              )}>
+                {item.label}
+              </span>
             </Button>
           );
         })}

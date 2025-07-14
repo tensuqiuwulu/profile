@@ -13,8 +13,6 @@ import {
   Phone, 
   MapPin, 
   Send, 
-  MessageCircle,
-  Calendar,
   Clock
 } from "lucide-react";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
@@ -133,18 +131,6 @@ export default function ContactSection() {
           </div>
         </CardContent>
       </Card>
-
-      {/* Quick Actions */}
-      <div className="grid grid-cols-2 gap-3">
-        <Button className="flex items-center gap-2" size="sm">
-          <MessageCircle className="w-4 h-4" />
-          Quick Chat
-        </Button>
-        <Button variant="outline" className="flex items-center gap-2" size="sm">
-          <Calendar className="w-4 h-4" />
-          Schedule Call
-        </Button>
-      </div>
 
       {/* Contact Form */}
       <Card className="border-0 shadow-sm">
