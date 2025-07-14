@@ -84,7 +84,7 @@ export default function ProjectsSection() {
       title: "BUPDA Bali",
       description:
         "A comprehensive online marketplace application designed specifically for villages in Bali Province. BUPDA Bali connects rural communities with affordable products and services, featuring competitive pricing and flexible payment options. The app's standout features include pay-later functionality, budget-friendly pricing, local vendor integration, and community-focused shopping experience. Built to support village economies and provide accessible e-commerce solutions for rural areas across Bali.",
-      images: ["/bupda1.png", "/bupda2.png"],
+      images: ["/bupda1.webp", "/bupda2.webp"],
       tags: ["Golang", "Flutter", "MySQL"],
       stats: { stars: 18, forks: 5, likes: 92 },
       demoUrl:
@@ -97,7 +97,7 @@ export default function ProjectsSection() {
       title: "Teman Bunda Belanja",
       description:
         "A comprehensive online grocery shopping application designed to make daily shopping convenient and accessible for families. Teman Bunda Belanja connects customers with fresh groceries, household essentials, and daily necessities through a user-friendly mobile platform. Features include real-time inventory updates, flexible delivery options, secure payment methods, product quality guarantee, and personalized shopping recommendations. Built to support busy families and provide reliable grocery delivery services with competitive pricing and excellent customer service.",
-      images: ["/bunda.png"],
+      images: ["/bunda.webp"],
       tags: ["Golang", "Flutter", "MySQL"],
       stats: { stars: 18, forks: 5, likes: 92 },
       demoUrl:
@@ -110,7 +110,7 @@ export default function ProjectsSection() {
       title: "TJSL Provinsi Bali",
       description:
         "A comprehensive Corporate Social Responsibility (CSR) management platform for Bali Province. The system enables companies to register, plan, execute, and report their CSR activities in accordance with Indonesian regulations. Features include project proposal submission, budget management, progress tracking, impact measurement, and collaborative coordination between corporations and government agencies to maximize social impact across Bali.",
-      images: ["/tjsl1.png", "/tjsl2.png", "/tjsl3.png"],
+      images: ["/tjsl1.webp", "/tjsl2.webp", "/tjsl3.webp"],
       tags: ["AdonisJS", "NextJS", "MySQL"],
       stats: { stars: 18, forks: 5, likes: 92 },
       demoUrl: "https://tjsl.baliprov.go.id",
@@ -122,7 +122,7 @@ export default function ProjectsSection() {
       title: "PRESTISE",
       description:
         "A comprehensive digital permit application system for Bali Province government. PRESTISE streamlines the permit and licensing process for businesses and individuals. Features include online application submission, document management, approval workflow, real-time status tracking, digital signatures, and integrated payment system. The platform enhances government service delivery by reducing bureaucracy and processing time while ensuring transparency and accountability.",
-      images: ["/prestise1.png", "/prestise2.png", "/prestise3.png"],
+      images: ["/prestise1.webp", "/prestise2.webp", "/prestise3.webp"],
       tags: ["Laravel", "VueJS"],
       stats: { stars: 31, forks: 12, likes: 203 },
       demoUrl: "https://prestise.baliprov.go.id/",
@@ -361,7 +361,10 @@ export default function ProjectsSection() {
                   fill
                   className="object-contain"
                   sizes="100vw"
+                  quality={85}
                   priority
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 />
               </div>
 
