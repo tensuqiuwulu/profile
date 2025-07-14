@@ -1,103 +1,234 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import MobileHeader from "@/components/MobileHeader";
+import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileStories from "@/components/MobileStories";
+import MobilePost from "@/components/MobilePost";
+import AboutSection from "@/components/sections/AboutSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+import ContactSection from "@/components/sections/ContactSection";
+import CreatePostSection from "@/components/sections/CreatePostSection";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Tensu Qiuwulu",
+  jobTitle: "Full Stack Developer",
+  url: "https://tensuqiuwulu.com",
+  email: "tensuqiuwulu@example.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Jakarta",
+    addressCountry: "Indonesia"
+  },
+  sameAs: [
+    "https://github.com/tensuqiuwulu",
+    "https://linkedin.com/in/tensuqiuwulu",
+    "https://x.com/tensuqiuwulu"
+  ],
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Python",
+    "PostgreSQL",
+    "MongoDB",
+    "TailwindCSS",
+    "Full Stack Development",
+    "Web Development"
+  ],
+  description: "Full Stack Developer dengan pengalaman 3+ tahun dalam pengembangan web modern. Spesialis dalam React, Next.js, TypeScript, dan Node.js."
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [activeTab, setActiveTab] = useState("home");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const stories = [
+    {
+      id: "1",
+      name: "JavaScript",
+      image: "/next.svg",
+      isViewed: false,
+    },
+    {
+      id: "2", 
+      name: "React",
+      image: "/react.svg",
+      isViewed: true,
+    },
+    {
+      id: "3",
+      name: "Next.js",
+      image: "/next.svg",
+      isViewed: false,
+    },
+    {
+      id: "4",
+      name: "TypeScript",
+      image: "/typescript.svg",
+      isViewed: false,
+    },
+  ];
+
+  const posts = [
+    {
+      id: "1",
+      author: {
+        name: "Tensu Qiuwulu",
+        username: "tensuqiuwulu",
+        avatar: "/avatar.svg",
+        verified: true,
+      },
+      content: "Excited to share my latest project! 🚀 Built with Next.js 15 and TypeScript. Clean, modern, and performant.",
+      image: "/project1.svg",
+      timestamp: "2 hours ago",
+      likes: 42,
+      comments: 8,
+      location: "Jakarta, Indonesia",
+      tags: ["nextjs", "typescript", "webdev"],
+    },
+    {
+      id: "2",
+      author: {
+        name: "Tensu Qiuwulu",
+        username: "tensuqiuwulu",
+        avatar: "/avatar.svg",
+        verified: true,
+      },
+      content: "Working on some cool animations with Framer Motion today. The possibilities are endless! ✨",
+      timestamp: "5 hours ago",
+      likes: 28,
+      comments: 3,
+      tags: ["framermotion", "animation", "react"],
+    },
+    {
+      id: "3",
+      author: {
+        name: "Tensu Qiuwulu",
+        username: "tensuqiuwulu",
+        avatar: "/avatar.svg",
+        verified: true,
+      },
+      content: "Just deployed a new feature using TailwindCSS v4. The new @theme inline syntax is amazing! 🎨",
+      timestamp: "1 day ago",
+      likes: 55,
+      comments: 12,
+      tags: ["tailwindcss", "css", "design"],
+    },
+  ];
+
+  const handleStoryClick = (storyId: string) => {
+    console.log("Story clicked:", storyId);
+  };
+
+  const handlePostAction = (postId: string, action: string) => {
+    console.log(`${action} on post:`, postId);
+  };
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "home":
+        return (
+          <motion.div 
+            key="home"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-0"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            <MobileStories 
+              stories={stories} 
+              onStoryClick={handleStoryClick} 
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="space-y-0">
+              {posts.map((post) => (
+                <MobilePost
+                  key={post.id}
+                  post={post}
+                  onLike={(id) => handlePostAction(id, "like")}
+                  onComment={(id) => handlePostAction(id, "comment")}
+                  onShare={(id) => handlePostAction(id, "share")}
+                  onBookmark={(id) => handlePostAction(id, "bookmark")}
+                />
+              ))}
+            </div>
+          </motion.div>
+        );
+      case "about":
+        return (
+          <motion.div
+            key="about"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <AboutSection />
+          </motion.div>
+        );
+      case "projects":
+        return (
+          <motion.div
+            key="projects"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ProjectsSection />
+          </motion.div>
+        );
+      case "contact":
+        return (
+          <motion.div
+            key="contact"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ContactSection />
+          </motion.div>
+        );
+      case "post":
+        return (
+          <motion.div
+            key="post"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <CreatePostSection />
+          </motion.div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="min-h-screen bg-background">
+        <MobileHeader showSearch={false} />
+        
+        <main className="pt-16 pb-20">
+          {renderContent()}
+        </main>
+        
+        <MobileBottomNav 
+          activeTab={activeTab} 
+          onTabChange={setActiveTab} 
+        />
+      </div>
+    </>
   );
 }
