@@ -8,7 +8,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ImageCarousel from "@/components/ui/image-carousel";
 import { 
   Heart, 
-  MessageCircle, 
   Share, 
   ExternalLink, 
   Github,
@@ -145,15 +144,6 @@ export default function ProjectsSection() {
                       >
                         <Heart className="w-5 h-5 mr-1" />
                         <span className="text-sm">{project.stats.likes}</span>
-                      </Button>
-                      
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="p-0 h-auto"
-                      >
-                        <MessageCircle className="w-5 h-5 mr-1" />
-                        <span className="text-sm">Comment</span>
                       </Button>
                       
                       <Button

@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Calendar, MapPin, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, Link as LinkIcon, Users } from "lucide-react";
 
 export default function AboutSection() {
   const skills = [
@@ -84,15 +84,27 @@ export default function AboutSection() {
             TypeScript ecosystem.
           </p>
 
-          <div className="flex gap-2">
-            <Button size="sm" className="flex-1">
-              <Users className="w-4 h-4 mr-2" />
-              Follow
-            </Button>
-            <Button size="sm" variant="outline" className="flex-1">
-              <LinkIcon className="w-4 h-4 mr-2" />
-              Website
-            </Button>
+          <div className="flex flex-wrap gap-2 mb-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+            >
+              <Button
+                asChild
+                size="sm"
+                className="bg-primary hover:text-blue-600 text-primary-foreground"
+              >
+                <a
+                  href="/cv.pdf"
+                  download="Tensu_Qiuwulu_CV.pdf"
+                  className="flex items-center gap-2"
+                >
+                  <Download className="w-4 h-4" />
+                  Download My CV
+                </a>
+              </Button>
+            </motion.div>
           </div>
         </CardContent>
       </Card>

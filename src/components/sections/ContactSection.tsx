@@ -8,19 +8,19 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Mail, 
-  MapPin, 
-  Send, 
-  Clock
-} from "lucide-react";
-import { SiGithub, SiLinkedin, SiX, SiWhatsapp } from "react-icons/si";
+import { Mail, MapPin, Send, Clock } from "lucide-react";
+import {
+  SiGithub,
+  SiLinkedin,
+  SiWhatsapp,
+  SiInstagram,
+} from "react-icons/si";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
 
   const contactMethods = [
@@ -28,41 +28,41 @@ export default function ContactSection() {
       icon: Mail,
       label: "Email",
       value: "tensu104qiuwulu98@gmail.com",
-      href: "#"
+      href: "#",
     },
     {
       icon: SiWhatsapp,
       label: "WhatsApp",
       value: "+62 877-6221-2544",
-      href: "https://wa.me/6287762212544"
+      href: "https://wa.me/6287762212544",
     },
     {
       icon: MapPin,
       label: "Location",
       value: "Bali, Indonesia",
-      href: "#"
-    }
+      href: "#",
+    },
   ];
 
   const socialLinks = [
     {
+      name: "Instagram",
+      icon: SiInstagram,
+      url: "https://instagram.com/tensuqiuwulu",
+      color: "hover:text-pink-500",
+    },
+    {
+      name: "GitHub",
       icon: SiGithub,
-      label: "GitHub",
       url: "https://github.com/tensuqiuwulu",
-      color: "hover:text-gray-900"
+      color: "hover:text-gray-900",
     },
     {
+      name: "LinkedIn",
       icon: SiLinkedin,
-      label: "LinkedIn",
       url: "https://linkedin.com/in/tensuqiuwulu",
-      color: "hover:text-blue-600"
+      color: "hover:text-blue-600",
     },
-    {
-      icon: SiX,
-      label: "X (Twitter)",
-      url: "https://x.com/tensuqiuwulu",
-      color: "hover:text-gray-900"
-    }
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -71,10 +71,12 @@ export default function ContactSection() {
     // Handle form submission
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -97,7 +99,9 @@ export default function ContactSection() {
             </Avatar>
             <div className="flex-1">
               <h3 className="font-semibold">Tensu Qiuwulu</h3>
-              <p className="text-sm text-muted-foreground">Full Stack Developer</p>
+              <p className="text-sm text-muted-foreground">
+                Full Stack Developer
+              </p>
               <div className="flex items-center gap-2 mt-1">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <span className="text-xs text-muted-foreground">Online</span>
@@ -117,17 +121,47 @@ export default function ContactSection() {
                   href={method.href}
                   className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
                   target={method.label === "WhatsApp" ? "_blank" : undefined}
-                  rel={method.label === "WhatsApp" ? "noopener noreferrer" : undefined}
+                  rel={
+                    method.label === "WhatsApp"
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                 >
                   <div className="p-2 bg-primary/10 rounded-lg">
                     <method.icon className="w-4 h-4 text-primary" />
                   </div>
                   <div>
                     <div className="text-sm font-medium">{method.label}</div>
-                    <div className="text-xs text-muted-foreground">{method.value}</div>
+                    <div className="text-xs text-muted-foreground">
+                      {method.value}
+                    </div>
                   </div>
                 </a>
               </motion.div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Social Links */}
+      <Card className="border-0 shadow-sm">
+        <CardContent className="p-4">
+          <h3 className="font-semibold mb-3">Connect with Me</h3>
+          <div className="flex justify-center gap-4">
+            {socialLinks.map((social, index) => (
+              <motion.a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors ${social.color} text-sm`}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <social.icon className="w-4 h-4" />
+                <span>{social.name}</span>
+              </motion.a>
             ))}
           </div>
         </CardContent>
@@ -181,29 +215,6 @@ export default function ContactSection() {
               Send Message
             </Button>
           </form>
-        </CardContent>
-      </Card>
-
-      {/* Social Links */}
-      <Card className="border-0 shadow-sm">
-        <CardContent className="p-4">
-          <h3 className="font-semibold mb-3">Connect with Me</h3>
-          <div className="flex justify-center gap-4">
-            {socialLinks.map((social, index) => (
-              <motion.a
-                key={social.label}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-3 rounded-full bg-muted/50 hover:bg-muted transition-colors ${social.color}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <social.icon className="w-5 h-5" />
-              </motion.a>
-            ))}
-          </div>
         </CardContent>
       </Card>
 
