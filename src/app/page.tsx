@@ -1,25 +1,12 @@
 "use client";
 
-import { useState, lazy, Suspense } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import MobileHeader from "@/components/MobileHeader";
 import MobileBottomNav from "@/components/MobileBottomNav";
-import { Skeleton } from "@/components/ui/skeleton";
-
-// Lazy load components that are not immediately visible
-const AboutSection = lazy(() => import("@/components/sections/AboutSection"));
-const ProjectsSection = lazy(() => import("@/components/sections/ProjectsSection"));
-const ContactSection = lazy(() => import("@/components/sections/ContactSection"));
-
-// Loading component
-const LoadingSection = () => (
-  <div className="p-4 space-y-4">
-    <Skeleton className="h-8 w-48" />
-    <Skeleton className="h-32 w-full" />
-    <Skeleton className="h-24 w-full" />
-    <Skeleton className="h-24 w-full" />
-  </div>
-);
+import AboutSection from "@/components/sections/AboutSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+import ContactSection from "@/components/sections/ContactSection";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -30,8 +17,7 @@ const jsonLd = {
   email: "tensuqiuwulu@example.com",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Bali",
-    addressRegion: "Bali",
+    addressLocality: "Jakarta",
     addressCountry: "Indonesia"
   },
   sameAs: [
@@ -40,45 +26,18 @@ const jsonLd = {
     "https://x.com/tensuqiuwulu"
   ],
   knowsAbout: [
-    "React Development",
-    "Next.js Framework",
-    "TypeScript Programming",
-    "Node.js Backend",
-    "Python Development",
-    "PostgreSQL Database",
-    "MongoDB Database",
-    "TailwindCSS Styling",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Python",
+    "PostgreSQL",
+    "MongoDB",
+    "TailwindCSS",
     "Full Stack Development",
-    "Modern Web Development",
-    "JavaScript Programming",
-    "Frontend Development",
-    "Backend Development",
-    "API Development",
-    "Database Design",
-    "Responsive Design"
+    "Web Development"
   ],
-  hasOccupation: {
-    "@type": "Occupation",
-    name: "Full Stack Developer",
-    occupationLocation: {
-      "@type": "Place",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Bali",
-        addressCountry: "Indonesia"
-      }
-    }
-  },
-  description: "Professional Full Stack Developer with 4+ years experience in modern web development. Specialized in React, Next.js, TypeScript, Node.js, and Python. Expert in building scalable web applications and available for freelance projects.",
-  alumniOf: "Software Engineering",
-  workExample: [
-    {
-      "@type": "WebSite",
-      name: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with Next.js and TypeScript",
-      url: "https://tensuqiuwulu.com"
-    }
-  ]
+  description: "Full Stack Developer dengan pengalaman 3+ tahun dalam pengembangan web modern. Spesialis dalam React, Next.js, TypeScript, dan Node.js."
 };
 
 export default function Home() {
@@ -94,14 +53,8 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.3 }}
-            className="animate-optimized"
           >
-            <div className="sr-only">
-              <h1>Tensu Qiuwulu - Full Stack Developer | React Next.js TypeScript Expert</h1>
-            </div>
-            <Suspense fallback={<LoadingSection />}>
-              <AboutSection />
-            </Suspense>
+            <AboutSection />
           </motion.div>
         );
       case "projects":
@@ -112,11 +65,8 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.3 }}
-            className="animate-optimized"
           >
-            <Suspense fallback={<LoadingSection />}>
-              <ProjectsSection />
-            </Suspense>
+            <ProjectsSection />
           </motion.div>
         );
       case "contact":
@@ -127,11 +77,8 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.3 }}
-            className="animate-optimized"
           >
-            <Suspense fallback={<LoadingSection />}>
-              <ContactSection />
-            </Suspense>
+            <ContactSection />
           </motion.div>
         );
       default:
@@ -142,14 +89,8 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.3 }}
-            className="animate-optimized"
           >
-            <div className="sr-only">
-              <h1>Tensu Qiuwulu - Full Stack Developer | React Next.js TypeScript Expert</h1>
-            </div>
-            <Suspense fallback={<LoadingSection />}>
-              <AboutSection />
-            </Suspense>
+            <AboutSection />
           </motion.div>
         );
     }

@@ -5,24 +5,20 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap",
-  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",
-  preload: true,
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Tensu Qiuwulu - Full Stack Developer | React Next.js TypeScript Expert",
-    template: "%s | Tensu Qiuwulu - Full Stack Developer"
+    default: "Tensu Qiuwulu - Full Stack Developer",
+    template: "%s | Tensu Qiuwulu"
   },
-  description: "Tensu Qiuwulu - Professional Full Stack Developer with 4+ years experience in React, Next.js, TypeScript, Node.js, Python, and modern web development. Specialized in building scalable web applications and available for freelance projects.",
-  keywords: ["Tensu Qiuwulu", "Full Stack Developer", "React Developer", "Next.js Developer", "TypeScript Developer", "Node.js Developer", "Python Developer", "Web Developer", "Frontend Developer", "Backend Developer", "JavaScript Expert", "Portfolio Website", "Freelance Developer", "Bali Developer", "Indonesia Developer", "Modern Web Development", "Scalable Applications"],
+  description: "Portfolio website of Tensu Qiuwulu, a passionate Full Stack Developer specializing in modern web development with React, Next.js, TypeScript, and Node.js. Available for freelance projects and collaborations.",
+  keywords: ["Full Stack Developer", "React Developer", "Next.js Developer", "TypeScript", "Node.js", "Web Developer", "Frontend Developer", "Backend Developer", "JavaScript", "Portfolio"],
   authors: [{ name: "Tensu Qiuwulu", url: "https://tensuqiuwulu.com" }],
   creator: "Tensu Qiuwulu",
   publisher: "Tensu Qiuwulu",
@@ -36,16 +32,16 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Tensu Qiuwulu - Full Stack Developer | React Next.js TypeScript Expert",
-    description: "Professional Full Stack Developer with 4+ years experience in React, Next.js, TypeScript, Node.js, Python, and modern web development. Specialized in building scalable web applications.",
+    title: "Tensu Qiuwulu - Full Stack Developer",
+    description: "Portfolio website of Tensu Qiuwulu, a passionate Full Stack Developer specializing in modern web development with React, Next.js, TypeScript, and Node.js.",
     url: "https://tensuqiuwulu.com",
-    siteName: "Tensu Qiuwulu - Full Stack Developer Portfolio",
+    siteName: "Tensu Qiuwulu Portfolio",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Tensu Qiuwulu - Full Stack Developer | React Next.js TypeScript Expert",
+        alt: "Tensu Qiuwulu - Full Stack Developer",
       },
     ],
     locale: "id_ID",
@@ -53,8 +49,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tensu Qiuwulu - Full Stack Developer | React Next.js TypeScript Expert",
-    description: "Professional Full Stack Developer with 3+ years experience in modern web development. Specialized in React, Next.js, TypeScript, Node.js, and Python.",
+    title: "Tensu Qiuwulu - Full Stack Developer",
+    description: "Portfolio website of Tensu Qiuwulu, a passionate Full Stack Developer specializing in modern web development.",
     creator: "@tensuqiuwulu",
     images: ["/og-image.jpg"],
   },
@@ -82,28 +78,15 @@ export default function RootLayout({
   return (
     <html lang="id">
       <head>
-        {/* Critical resources */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#10b981" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-        
-        {/* Icons with proper sizes */}
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/icon-192x192.svg" sizes="192x192" />
-        
-        {/* Apple-specific meta tags */}
+        <link rel="apple-touch-icon" href="/icon-192x192.svg" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="TQ Portfolio" />
-        
-        {/* Preload critical CSS */}
-        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
-        <link rel="preload" href="/_next/static/chunks/main-app.js" as="script" />
-        
-        {/* Resource hints for better performance */}
-        <link rel="prefetch" href="/_next/static/chunks/pages/_app.js" />
-        <link rel="prefetch" href="/_next/static/chunks/webpack.js" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground overflow-x-hidden`}
