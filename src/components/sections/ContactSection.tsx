@@ -10,12 +10,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { 
   Mail, 
-  Phone, 
   MapPin, 
   Send, 
   Clock
 } from "lucide-react";
-import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
+import { SiGithub, SiLinkedin, SiX, SiWhatsapp } from "react-icons/si";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -28,19 +27,19 @@ export default function ContactSection() {
     {
       icon: Mail,
       label: "Email",
-      value: "tensuqiuwulu@example.com",
-      href: "mailto:tensuqiuwulu@example.com"
+      value: "tensu104qiuwulu98@gmail.com",
+      href: "#"
     },
     {
-      icon: Phone,
-      label: "Phone",
-      value: "+62 123 456 7890",
-      href: "tel:+621234567890"
+      icon: SiWhatsapp,
+      label: "WhatsApp",
+      value: "+62 877-6221-2544",
+      href: "https://wa.me/6287762212544"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "Jakarta, Indonesia",
+      value: "Bali, Indonesia",
       href: "#"
     }
   ];
@@ -117,6 +116,8 @@ export default function ContactSection() {
                 <a
                   href={method.href}
                   className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                  target={method.label === "WhatsApp" ? "_blank" : undefined}
+                  rel={method.label === "WhatsApp" ? "noopener noreferrer" : undefined}
                 >
                   <div className="p-2 bg-primary/10 rounded-lg">
                     <method.icon className="w-4 h-4 text-primary" />
@@ -220,7 +221,7 @@ export default function ContactSection() {
             </div>
             <div className="flex justify-between items-center">
               <span className="text-muted-foreground">Timezone</span>
-              <span className="font-medium">GMT+7 (Jakarta)</span>
+              <span className="font-medium">GMT+8 (Makassar)</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-muted-foreground">Status</span>

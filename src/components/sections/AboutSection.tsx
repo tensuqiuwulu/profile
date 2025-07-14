@@ -18,21 +18,23 @@ export default function AboutSection() {
       title: "Senior Frontend Developer",
       company: "Tech Company",
       period: "2022 - Present",
-      location: "Jakarta, Indonesia"
+      location: "Bali, Indonesia",
+      type: "Full Time"
     },
     {
       title: "Full Stack Developer",
       company: "Startup Inc",
       period: "2020 - 2022",
-      location: "Remote"
+      location: "Remote",
+      type: "Part Time"
     }
   ];
 
   const stats = [
-    { label: "Projects", value: "50+" },
-    { label: "Experience", value: "3+ Years" },
+    { label: "Projects", value: "10+" },
+    { label: "Experience", value: "4+ Years" },
     { label: "Technologies", value: "15+" },
-    { label: "Clients", value: "25+" }
+    { label: "Clients", value: "10+" }
   ];
 
   return (
@@ -50,13 +52,13 @@ export default function AboutSection() {
               <p className="text-muted-foreground">Full Stack Developer</p>
               <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4" />
-                <span>Jakarta, Indonesia</span>
+                <span>Bali, Indonesia</span>
               </div>
             </div>
           </div>
           
           <p className="text-sm text-muted-foreground mb-4">
-            Passionate full stack developer with 3+ years of experience building modern web applications. 
+            Passionate full stack developer with 4+ years of experience building modern web applications. 
             Specialized in React, Next.js, and TypeScript ecosystem.
           </p>
           
@@ -136,6 +138,11 @@ export default function AboutSection() {
                   <div className="flex items-center gap-1">
                     <MapPin className="w-3 h-3" />
                     {exp.location}
+                  </div>
+                  <div className="text-xs">
+                    <Badge variant="outline" className="text-xs h-5">
+                      {exp.type}
+                    </Badge>
                   </div>
                 </div>
               </motion.div>
