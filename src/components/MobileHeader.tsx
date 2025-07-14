@@ -29,30 +29,6 @@ export default function MobileHeader({ showSearch = false }: MobileHeaderProps) 
             </div>
           </div>
         </div>
-        
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="p-2 relative"
-          >
-            <Bell className="h-5 w-5" />
-            <Badge className="absolute -top-1 -right-1 h-4 w-4 p-0 text-xs bg-red-500 border-0">
-              3
-            </Badge>
-          </Button>
-          
-          <Button
-            variant="ghost"
-            size="sm"
-            className="p-2 relative"
-          >
-            <MessageCircle className="h-5 w-5" />
-            <Badge className="absolute -top-1 -right-1 h-4 w-4 p-0 text-xs bg-red-500 border-0">
-              5
-            </Badge>
-          </Button>
-        </div>
       </div>
       
       {showSearch && (

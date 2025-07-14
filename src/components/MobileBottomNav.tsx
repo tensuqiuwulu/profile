@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { 
-  Home,
   User,
   Briefcase,
   Mail
@@ -16,10 +15,9 @@ interface MobileBottomNavProps {
 
 export default function MobileBottomNav({ activeTab, onTabChange }: MobileBottomNavProps) {
   const navItems = [
-    { id: "home", icon: Home, label: "Home" },
     { id: "about", icon: User, label: "Profile" },
     { id: "projects", icon: Briefcase, label: "Projects" },
-    { id: "contact", icon: Mail, label: "Messages" },
+    { id: "contact", icon: Mail, label: "Contact Me" },
   ];
 
   return (
