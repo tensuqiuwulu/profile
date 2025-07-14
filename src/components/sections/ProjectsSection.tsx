@@ -13,8 +13,6 @@ import {
   Share,
   ExternalLink,
   Github,
-  Star,
-  GitFork,
   X,
   ChevronLeft,
   ChevronRight,
