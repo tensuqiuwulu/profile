@@ -21,7 +21,7 @@ export default function MobileHeader({ showSearch = false }: MobileHeaderProps) 
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <Avatar className="h-8 w-8">
-              <AvatarImage src="/avatar.svg" alt="Profile" />
+              <AvatarImage src="/profile.jpg" alt="Profile" />
               <AvatarFallback>TQ</AvatarFallback>
             </Avatar>
             <div>

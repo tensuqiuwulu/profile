@@ -79,7 +79,7 @@ export default function Home() {
       author: {
         name: "Tensu Qiuwulu",
         username: "tensuqiuwulu",
-        avatar: "/avatar.svg",
+        avatar: "/profile.jpg",
         verified: true,
       },
       content: "Excited to share my latest project! 🚀 Built with Next.js 15 and TypeScript. Clean, modern, and performant.",
@@ -95,7 +95,7 @@ export default function Home() {
       author: {
         name: "Tensu Qiuwulu",
         username: "tensuqiuwulu",
-        avatar: "/avatar.svg",
+        avatar: "/profile.jpg",
         verified: true,
       },
       content: "Working on some cool animations with Framer Motion today. The possibilities are endless! ✨",
@@ -109,7 +109,7 @@ export default function Home() {
       author: {
         name: "Tensu Qiuwulu",
         username: "tensuqiuwulu",
-        avatar: "/avatar.svg",
+        avatar: "/profile.jpg",
         verified: true,
       },
       content: "Just deployed a new feature using TailwindCSS v4. The new @theme inline syntax is amazing! 🎨",

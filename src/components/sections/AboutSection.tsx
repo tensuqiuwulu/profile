@@ -42,7 +42,7 @@ export default function AboutSection() {
         <CardContent className="p-6">
           <div className="flex items-center gap-4 mb-4">
             <Avatar className="w-20 h-20">
-              <AvatarImage src="/avatar.svg" alt="Profile" />
+              <AvatarImage src="/profile.jpg" alt="Profile" />
               <AvatarFallback>TQ</AvatarFallback>
             </Avatar>
             <div className="flex-1">

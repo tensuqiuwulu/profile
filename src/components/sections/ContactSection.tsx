@@ -93,7 +93,7 @@ export default function ContactSection() {
         <CardContent className="p-4">
           <div className="flex items-center gap-3 mb-4">
             <Avatar className="w-12 h-12">
-              <AvatarImage src="/avatar.svg" alt="Profile" />
+              <AvatarImage src="/profile.jpg" alt="Profile" />
               <AvatarFallback>TQ</AvatarFallback>
             </Avatar>
             <div className="flex-1">

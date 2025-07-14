@@ -23,7 +23,7 @@ export default function MobileStories({ stories, onStoryClick }: MobileStoriesPr
     {
       id: "own",
       name: "Your Story",
-      image: "/avatar.svg",
+      image: "/profile.jpg",
       isOwn: true,
     },
     ...stories,

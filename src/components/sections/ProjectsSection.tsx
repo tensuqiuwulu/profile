@@ -84,7 +84,7 @@ export default function ProjectsSection() {
                 {/* Project Header */}
                 <div className="flex items-center gap-3 p-4 pb-3">
                   <Avatar className="w-10 h-10">
-                    <AvatarImage src="/avatar.svg" alt="Profile" />
+                    <AvatarImage src="/profile.jpg" alt="Profile" />
                     <AvatarFallback>TQ</AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
