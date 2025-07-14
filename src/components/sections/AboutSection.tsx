@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Calendar, MapPin, Download } from "lucide-react";
+import { Calendar, MapPin, Download, Briefcase, Clock, Code, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function AboutSection() {
@@ -52,10 +52,34 @@ export default function AboutSection() {
   ];
 
   const stats = [
-    { label: "Projects", value: "10+" },
-    { label: "Experience", value: "4+ Years" },
-    { label: "Technologies", value: "15+" },
-    { label: "Clients", value: "10+" },
+    { 
+      label: "Projects", 
+      value: "10+", 
+      icon: Briefcase,
+      color: "text-blue-500",
+      bgColor: "bg-blue-50"
+    },
+    { 
+      label: "Experience", 
+      value: "4+ Years", 
+      icon: Clock,
+      color: "text-green-500",
+      bgColor: "bg-green-50"
+    },
+    { 
+      label: "Technologies", 
+      value: "15+", 
+      icon: Code,
+      color: "text-purple-500",
+      bgColor: "bg-purple-50"
+    },
+    { 
+      label: "Clients", 
+      value: "10+", 
+      icon: Users,
+      color: "text-orange-500",
+      bgColor: "bg-orange-50"
+    },
   ];
 
   return (
@@ -118,13 +142,20 @@ export default function AboutSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <Card className="text-center border-0 shadow-sm">
+            <Card className="border-0 shadow-sm hover:shadow-md transition-shadow duration-200">
               <CardContent className="p-4">
-                <div className="text-2xl font-bold text-primary">
-                  {stat.value}
-                </div>
-                <div className="text-xs text-muted-foreground">
-                  {stat.label}
+                <div className="flex items-center gap-3">
+                  <div className={`p-2 rounded-lg ${stat.bgColor} flex items-center justify-center`}>
+                    <stat.icon className={`w-5 h-5 ${stat.color}`} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-xl font-bold text-primary">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {stat.label}
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>

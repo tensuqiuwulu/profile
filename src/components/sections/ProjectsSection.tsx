@@ -64,9 +64,16 @@ export default function ProjectsSection() {
     <div className="p-4 space-y-4">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold">My Projects</h2>
-        <Button size="sm" variant="outline">
-          <Github className="w-4 h-4 mr-2" />
-          View All
+        <Button size="sm" variant="outline" asChild>
+          <a 
+            href="https://github.com/tensuqiuwulu?tab=repositories" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2"
+          >
+            <Github className="w-4 h-4" />
+            View All
+          </a>
         </Button>
       </div>
 
