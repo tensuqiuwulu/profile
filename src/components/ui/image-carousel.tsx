@@ -12,29 +12,50 @@ interface ImageCarouselProps {
 
 export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
   const nextImage = () => {
+    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
   const prevImage = () => {
+    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   const goToImage = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
   };
 
   const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const threshold = 50;
+    const velocity = info.velocity.x;
     
-    if (info.offset.x > threshold) {
+    // Consider velocity for more natural swipe detection
+    if (info.offset.x > threshold || velocity > 500) {
       // Swipe right - go to previous image
       prevImage();
-    } else if (info.offset.x < -threshold) {
+    } else if (info.offset.x < -threshold || velocity < -500) {
       // Swipe left - go to next image
       nextImage();
     }
+  };
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 1,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? "100%" : "-100%",
+      opacity: 1,
+    }),
   };
 
   if (images.length === 1) {
@@ -54,18 +75,29 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
     <div className="relative aspect-video bg-black overflow-hidden">
       {/* Main Image Display */}
       <div className="relative w-full h-full">
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.3 }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ 
+              type: "spring",
+              stiffness: 500,
+              damping: 40,
+              mass: 0.4
+            }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.2}
+            dragElastic={0.05}
             onDragEnd={handleDragEnd}
-            className="absolute inset-0 cursor-grab active:cursor-grabbing"
+            whileDrag={{ 
+              scale: 0.98,
+              rotateY: 0
+            }}
+            className="absolute inset-0 cursor-grab active:cursor-grabbing will-change-transform"
           >
             <Image
               src={images[currentIndex]}
