@@ -21,13 +21,6 @@ export default function AboutSection() {
 
   const experiences = [
     {
-      title: "Software Engineer",
-      company: "Harikatz",
-      period: "2025 - Present",
-      location: "Bali, Indonesia",
-      type: "Part Time",
-    },
-    {
       title: "Full Stack Developer",
       company: "Dinas Komunikasi, Informatika dan Statistik Provinsi Bali",
       period: "2022 - Present",
