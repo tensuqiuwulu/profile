@@ -68,19 +68,6 @@ export default function ProjectsSection() {
   const projects = [
     {
       id: 1,
-      title: "POS Hairkatz",
-      description:
-        "A comprehensive Point of Sale (POS) system specifically designed for barbershops and hair salons. Features include appointment scheduling, customer management, service tracking, inventory management, payment processing, and detailed sales analytics. Built with modern technologies to streamline barbershop operations and enhance customer experience.",
-      images: ["/hairkatz1.webp", "/hairkatz2.webp", "/hairkatz3.webp"],
-      tags: ["Golang", "Flutter", "PostgreSQL"],
-      stats: { stars: 24, forks: 8, likes: 156 },
-      demoUrl:
-        "https://play.google.com/store/apps/details?id=com.aksaratech.hairkatz&pcampaignid=web_share",
-      githubUrl: "#",
-      timestamp: "2 days ago",
-    },
-    {
-      id: 2,
       title: "BUPDA Bali",
       description:
         "A comprehensive online marketplace application designed specifically for villages in Bali Province. BUPDA Bali connects rural communities with affordable products and services, featuring competitive pricing and flexible payment options. The app's standout features include pay-later functionality, budget-friendly pricing, local vendor integration, and community-focused shopping experience. Built to support village economies and provide accessible e-commerce solutions for rural areas across Bali.",
@@ -93,7 +80,7 @@ export default function ProjectsSection() {
       timestamp: "1 week ago",
     },
     {
-      id: 3,
+      id: 2,
       title: "Teman Bunda Belanja",
       description:
         "A comprehensive online grocery shopping application designed to make daily shopping convenient and accessible for families. Teman Bunda Belanja connects customers with fresh groceries, household essentials, and daily necessities through a user-friendly mobile platform. Features include real-time inventory updates, flexible delivery options, secure payment methods, product quality guarantee, and personalized shopping recommendations. Built to support busy families and provide reliable grocery delivery services with competitive pricing and excellent customer service.",
@@ -106,7 +93,7 @@ export default function ProjectsSection() {
       timestamp: "1 week ago",
     },
     {
-      id: 4,
+      id: 3,
       title: "TJSL Provinsi Bali",
       description:
         "A comprehensive Corporate Social Responsibility (CSR) management platform for Bali Province. The system enables companies to register, plan, execute, and report their CSR activities in accordance with Indonesian regulations. Features include project proposal submission, budget management, progress tracking, impact measurement, and collaborative coordination between corporations and government agencies to maximize social impact across Bali.",
@@ -118,7 +105,7 @@ export default function ProjectsSection() {
       timestamp: "1 week ago",
     },
     {
-      id: 5,
+      id: 4,
       title: "PRESTISE",
       description:
         "A comprehensive digital permit application system for Bali Province government. PRESTISE streamlines the permit and licensing process for businesses and individuals. Features include online application submission, document management, approval workflow, real-time status tracking, digital signatures, and integrated payment system. The platform enhances government service delivery by reducing bureaucracy and processing time while ensuring transparency and accountability.",
